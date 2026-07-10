@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>三国杀 · 离线版</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Start screen ===== -->
+  <div id="start">
+    <h1>三国杀</h1>
+    <div class="sub">离线单机版 · 身份局</div>
+
+    <div class="setup-row">
+      <label>玩家人数：</label>
+      <div class="seg" id="countSeg"></div>
+    </div>
+
+    <div class="setup-row"><label>选择你的武将（默认随机）：</label></div>
+    <div class="gen-pick" id="genGrid"></div>
+
+    <div class="setup-row" style="margin-top:10px;">
+      <button class="btn-primary" id="startBtn">开始游戏</button>
+      <button class="btn-ghost" id="encyBtn">📖 图鉴</button>
+    </div>
+    <div class="sub" style="font-size:12px;max-width:640px;text-align:center;line-height:1.6;">
+      规则：主公与忠臣同阵营，需消灭反贼与内奸；反贼需杀死主公；内奸需成为最后的幸存者。<br/>
+      点击手牌或技能出牌，点击角色选择目标。右侧为实时战报。
+    </div>
+  </div>
+
+  <!-- ===== Table ===== -->
+  <div id="table" class="hidden">
+    <div id="tableLeft">
+      <div id="stageHint"></div>
+      <div id="topbar">
+        <button class="tb" id="encyBtn2">📖 图鉴</button>
+        <button class="tb" id="settingsBtn">⚙ 设置</button>
+        <button class="tb" id="logToggle">📜 战报</button>
+      </div>
+
+      <div id="opponents"></div>
+
+      <div id="center">
+        <div id="phaseBadge"></div>
+        <div id="ticker"></div>
+        <div class="pile">
+          <div id="deckCount">0</div>
+          <div>牌堆</div>
+        </div>
+        <div id="playArea"></div>
+        <div class="pile">
+          <div id="discardCount">0</div>
+          <div>弃牌</div>
+        </div>
+        <div id="hint"></div>
+      </div>
+
+      <div id="me">
+        <div id="meTop">
+          <div id="meInfo">
+            <div id="meAvatar"></div>
+            <span id="meGeneral">—</span>
+            <span class="nat-badge" id="meNation"></span>
+            <span id="meHp"></span>
+            <span id="meEquip"></span>
+          </div>
+          <div id="meSkills"></div>
+          <div id="actions"></div>
+        </div>
+        <div id="hand"></div>
+      </div>
+    </div>
+
+    <!-- ===== Log (persistent dock) ===== -->
+    <div id="logWrap">
+      <div class="log-head">
+        <h3>战报</h3>
+        <button id="logFilter">全部</button>
+      </div>
+      <div id="log"></div>
+    </div>
+  </div>
+
+  <!-- ===== Overlays ===== -->
+  <div id="overlay" class="hidden"><div class="box"></div></div>
+  <div id="modal" class="hidden"><div class="modal-box"></div></div>
+  <!-- banner for phases/turns -->
+  <div id="banner" class="hidden"></div>
+
+  <!-- ===== Scripts (classic, load in order; works via file://) ===== -->
+  <script src="js/00-core.js"></script>
+  <script src="js/10-cards.js"></script>
+  <script src="js/15-art.js"></script>
+  <script src="js/30-cardeffects.js"></script>
+  <script src="js/40-engine.js"></script>
+  <script src="js/50-skills.js"></script>
+  <script src="js/55-generals.js"></script>
+  <script src="js/60-ai.js"></script>
+  <script src="js/70-ui.js"></script>
+  <script src="js/72-sound.js"></script>
+  <script src="js/75-anim.js"></script>
+  <script src="js/76-table.js"></script>
+  <script src="js/77-state.js"></script>
+  <script src="js/80-main.js"></script>
+</body>
+</html>
