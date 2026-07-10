@@ -62,6 +62,18 @@ for (const key of Object.keys(SGS.ART.PORTRAITS)) {
   assert(!!SGS.GENERALS[key], `portrait has no matching general: ${key}`);
 }
 
+const attributionPath = path.join(ROOT, 'assets', 'ATTRIBUTION.json');
+assert(fs.existsSync(attributionPath), 'missing machine-readable asset attribution ledger');
+if (fs.existsSync(attributionPath)) {
+  const attribution = JSON.parse(fs.readFileSync(attributionPath, 'utf8'));
+  assert(attribution.schema_version === 1, 'unsupported attribution schema');
+  assert(Array.isArray(attribution.errors) && attribution.errors.length === 0, 'asset audit contains errors');
+  const auditedKeys = new Set((attribution.assets || []).filter(item => item.allowed).map(item => item.key));
+  for (const key of Object.keys(SGS.ART.PORTRAITS)) {
+    assert(auditedKeys.has(key), `portrait is missing an allowed audit record: ${key}`);
+  }
+}
+
 console.log(`Validated ${browserFiles.length} scripts, ${SGS.generalList().length} generals, ${deck.length} cards, and ${Object.keys(SGS.ART.PORTRAITS).length} portraits.`);
 console.log('RESULT:', failures === 0 ? 'PASS' : 'FAIL');
 process.exit(failures === 0 ? 0 : 1);
