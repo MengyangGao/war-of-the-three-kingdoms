@@ -85,7 +85,17 @@
     SGS.PACE = v;
     if (SGS.Anim) SGS.Anim.PACE = v;
     try { localStorage.setItem('sft_pace', JSON.stringify(v)); } catch (e) {}
+    var control = $('paceControl');
+    if (control) {
+      var best = 0, bestDiff = Infinity;
+      for (var i = 0; i < control.options.length; i++) {
+        var diff = Math.abs(parseFloat(control.options[i].value) - v);
+        if (diff < bestDiff) { best = i; bestDiff = diff; }
+      }
+      control.selectedIndex = best;
+    }
   }
+  SGS.setPace = setPace;
 
   function startGame() {
     var startBtn = $('startBtn');
@@ -155,18 +165,10 @@
     buildGeneralGrid();
     buildCountSeg();
     $('startBtn').onclick = startGame;
+    var paceControl = $('paceControl');
+    if (paceControl) paceControl.onchange = function () { setPace(parseFloat(paceControl.value)); };
     var license = $('licenseBtn');
-    if (license) license.onclick = function () {
-      SGS.UI.openModal(function (box) {
-        box.appendChild(el('div', 'panel-kicker', '开放资产账本'));
-        box.appendChild(el('h2', null, '来源与许可'));
-        box.appendChild(el('p', 'license-copy', '24 张历史画像均来自 Wikimedia Commons 并经过许可审计：23 张为公有领域，孙尚香画像为 CC BY-SA 4.0。卡牌图标、界面纹理与音效由本项目代码生成。'));
-        var links = el('div', 'license-links');
-        var ledger = document.createElement('a'); ledger.href = 'assets/ATTRIBUTION.md'; ledger.textContent = '查看完整资产账本'; ledger.target = '_blank';
-        var policy = document.createElement('a'); policy.href = 'docs/ASSET_POLICY.md'; policy.textContent = '查看开放资产政策'; policy.target = '_blank';
-        links.appendChild(ledger); links.appendChild(policy); box.appendChild(links);
-      });
-    };
+    if (license) license.onclick = function () { SGS.UI.assetCredits(); };
   });
 
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this));

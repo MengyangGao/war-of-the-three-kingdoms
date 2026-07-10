@@ -20,6 +20,7 @@ npm run check          # 仅结构校验
 npm run test:unit      # 结构 + 单元 + 濒死
 npm run test:sim       # 60 局模拟
 npm run test:stress    # 500 局压力模拟
+npm run build:single   # 生成并校验无外部应用资源的单文件版
 node test/run.js 120 5 42
 node test/dump.js 42 8
 ```
@@ -44,6 +45,7 @@ UI 测试覆盖真实点击、目标选择、响应、弹窗、战报和移动�
 
 - `npm test` 通过。
 - 修改 UI 时额外运行 `npm run test:ui`。
+- 发布分享版前运行 `npm run build:single`，并确认 `dist/sanfen-tianxia.html` 可独立打开。
 - 新卡牌/技能至少包含一个成功场景和一个非法/取消/空区域场景。
 - 牌移动只能通过引擎移动 API。
 - 新脚本同时加入 `index.html`；若无 DOM 依赖且需要无头测试，再加入 `test/_files.js`。

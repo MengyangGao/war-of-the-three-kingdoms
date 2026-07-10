@@ -11,7 +11,9 @@
     "test:ui": "python test/ui_features.py && python test/ui_play.py 5 0.05",
     "audit:assets": "python tools/audit_assets.py",
     "audit:assets:write": "python tools/audit_assets.py --write",
-    "test": "npm run test:unit && npm run test:sim"
+    "build:single": "python tools/build_single.py",
+    "check:single": "python tools/build_single.py --check",
+    "test": "npm run test:unit && npm run test:sim && npm run check:single"
   },
   "engines": {
     "node": ">=14.0"

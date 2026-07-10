@@ -25,6 +25,8 @@
   /* ============================ init ============================ */
   UI.start = function (game, me) {
     UI.game = game; UI.me = me;
+    UI.activity = {};
+    UI.activityVersion = 0;
     UI._lastMeSig = null; UI._lastOppSig = null;
     $('start').classList.add('hidden');
     $('table').classList.remove('hidden');
@@ -36,8 +38,10 @@
 
   /* ============================ logging ============================ */
   var TICKER_KINDS = { turn: 1, damage: 1, heal: 1, skill: 1, trick: 1, basic: 1, equip: 1, draw: 1, death: 1, judge: 1, gain: 1, discard: 1, gameover: 1, reward: 1, penalty: 1 };
+  var ACTIVITY_MARK = { damage: '伤', heal: '救', skill: '技', trick: '策', basic: '攻', equip: '装', death: '亡', judge: '判', reward: '赏', penalty: '罚' };
   var LOG_MAX_DOM = 500;
   UI.onLog = function (entry) {
+    UI.recordActivity(entry);
     var log = $('log');
     if (log) {
       var d = el('div', 'entry l-' + (entry.kind || 'info'), entry.text);
@@ -50,9 +54,46 @@
     // surface the latest important action on the table
     if (entry.kind && TICKER_KINDS[entry.kind]) UI.setTicker(entry.text, entry.kind);
   };
+
+  UI.recordActivity = function (entry) {
+    var mark = ACTIVITY_MARK[entry.kind];
+    if (!mark || !UI.game || !entry.text) return;
+    var participants = UI.game.players.filter(function (player) {
+      var generalName = player.general && player.general.cn;
+      return entry.player === player.id || entry.text.indexOf(player.name) >= 0 || (generalName && entry.text.indexOf(generalName) >= 0);
+    });
+    if (!participants.length) return;
+    participants.forEach(function (player) {
+      var peer = participants.filter(function (candidate) { return candidate !== player; })[0];
+      var peerName = peer ? ((peer.general && peer.general.cn) || peer.name) : '';
+      var item = { kind: entry.kind, mark: mark, peer: peerName, text: entry.text };
+      var list = UI.activity[player.id] || (UI.activity[player.id] = []);
+      list.unshift(item);
+      if (list.length > 5) list.length = 5;
+    });
+    UI.activityVersion++;
+    UI._lastOppSig = null;
+    UI._lastMeSig = null;
+    UI.renderAll();
+  };
+
+  UI.activityEl = function (player, className) {
+    var list = (UI.activity && UI.activity[player.id]) || [];
+    var wrap = el('div', className || 'event-feed');
+    wrap.setAttribute('aria-label', list.length ? '最近互动：' + list.map(function (item) { return item.text; }).join('；') : '暂无互动事件');
+    if (!list.length) { wrap.classList.add('empty'); wrap.textContent = '暂无互动'; return wrap; }
+    list.forEach(function (item) {
+      var label = item.mark + (item.peer ? '·' + item.peer.slice(-2) : '');
+      var chip = el('span', 'event-chip k-' + item.kind, label);
+      chip.title = item.text;
+      wrap.appendChild(chip);
+    });
+    return wrap;
+  };
   UI.setTicker = function (text, kind) {
     var t = $('ticker'); if (!t) return;
-    t.textContent = text;
+    var label = { damage: '伤害', heal: '救援', skill: '技能', trick: '计策', basic: '出牌', equip: '装备', death: '阵亡', judge: '判定', turn: '回合' }[kind];
+    t.textContent = (label ? label + '｜' : '') + text;
     t.className = 'k-' + (kind || 'info');
     t.classList.remove('pulse'); void t.offsetWidth; t.classList.add('pulse');
   };
@@ -317,7 +358,10 @@
     panel.dataset.seat = p.seat;
     panel.tabIndex = 0;
     panel.setAttribute('role', 'button');
-    panel.setAttribute('aria-label', (p.general ? p.general.cn : p.name) + '，体力 ' + Math.max(0, p.hp) + '/' + p.maxHp + '，手牌 ' + p.hand.length);
+    var distance = p.alive && UI.me && p !== UI.me ? UI.game.distance(UI.me, p) : null;
+    var reverseDistance = p.alive && UI.me && p !== UI.me ? UI.game.distance(p, UI.me) : null;
+    var myRange = UI.me ? UI.game.attackRange(UI.me) : 1;
+    panel.setAttribute('aria-label', (p.general ? p.general.cn : p.name) + '，体力 ' + Math.max(0, p.hp) + '/' + p.maxHp + '，手牌 ' + p.hand.length + (distance == null ? '，已阵亡' : '，你到他的距离 ' + distance));
     if (!p.alive) panel.classList.add('dead');
     if (p === UI.game.current) panel.classList.add('turn');
     if (p.hp <= 0 && p.alive) panel.classList.add('dying');
@@ -327,6 +371,11 @@
     if (p.general) UI.portraitInto(pbg, p.general);
     panel.appendChild(pbg);
     panel.appendChild(el('div', 'pfade'));
+
+    var dist = el('div', 'distance-chip' + (distance != null && distance <= myRange ? ' in-range' : ''), distance == null ? '已阵亡' : distance <= myRange ? ('可攻击 · 距' + distance) : ('距离 ' + distance));
+    dist.title = distance == null ? '该角色已经阵亡，不再计入座次距离' : '你 → ' + (p.general ? p.general.cn : p.name) + '：距离 ' + distance + '（你的攻击范围 ' + myRange + '）；对方 → 你：距离 ' + reverseDistance;
+    panel.appendChild(dist);
+    panel.appendChild(UI.activityEl(p));
 
     var content = el('div', 'p-content');
     var top = el('div', 'p-top');
@@ -441,7 +490,7 @@
 
   UI.renderOpponents = function () {
     var others = UI.game.players.filter(function (p) { return p !== UI.me; });
-    var sig = SGS.Presentation.opponentsSignature(UI.game, others, UI.selectablePlayers, UI.selectedPlayers);
+    var sig = SGS.Presentation.opponentsSignature(UI.game, others, UI.selectablePlayers, UI.selectedPlayers) + '|activity=' + UI.activityVersion;
     if (sig === UI._lastOppSig) return;
     UI._lastOppSig = sig;
     var wrap = $('opponents');
@@ -451,13 +500,15 @@
 
   UI.renderMe = function () {
     var p = UI.me;
-    var sig = SGS.Presentation.selfSignature(UI.game, p, UI.selectableCards, UI.selectedCards);
+    var sig = SGS.Presentation.selfSignature(UI.game, p, UI.selectableCards, UI.selectedCards) + '|activity=' + UI.activityVersion;
     if (sig === UI._lastMeSig) return;
     UI._lastMeSig = sig;
     var av = $('meAvatar');
     if (av) { av.innerHTML = ''; if (p.general) { UI.setPortrait(av, p.general, true); } av.style.cursor = 'pointer'; av.onclick = function () { UI.generalDetail(p); }; }
     $('meGeneral').textContent = (p.general ? p.general.cn : p.name) + '（' + UI.roleLabel(p).t + '）';
     var meHp = $('meHp'); clear(meHp); meHp.appendChild(UI.hpEl(p));
+    var meRange = $('meRange');
+    if (meRange) { var range = UI.game.attackRange(p); meRange.textContent = '攻击范围 ' + range; meRange.title = '装备与技能修正后的当前攻击范围'; }
     var nat = $('meNation');
     nat.textContent = p.general ? SGS.NATIONS[p.nation].cn : '';
     nat.style.background = p.general ? SGS.NATIONS[p.nation].color : 'transparent';
@@ -484,6 +535,8 @@
       }
       meEq.appendChild(jz);
     }
+    var meEvents = $('meEvents');
+    if (meEvents) { clear(meEvents); meEvents.appendChild(UI.activityEl(p, 'event-feed me-event-feed')); }
 
     // hand
     var hand = $('hand'); clear(hand);
@@ -1121,6 +1174,25 @@
     });
   };
 
+  UI.assetCredits = function () {
+    UI.openModal(function (box) {
+      box.appendChild(el('div', 'panel-kicker', '开放资产账本'));
+      box.appendChild(el('h2', null, '来源与许可'));
+      box.appendChild(el('p', 'license-copy', '24 张历史画像均来自 Wikimedia Commons 并经过许可审计：23 张为公有领域，孙尚香画像为 CC BY-SA 4.0，作者 Wang Hui 王翙（1736–1795）。卡牌图标、界面纹理与音效由本项目代码生成。'));
+      var embedded = document.getElementById('embeddedAttribution');
+      if (embedded) {
+        var pre = el('pre', 'embedded-ledger');
+        try { pre.textContent = JSON.parse(embedded.textContent); } catch (e) { pre.textContent = embedded.textContent; }
+        box.appendChild(pre);
+        return;
+      }
+      var links = el('div', 'license-links');
+      var ledger = document.createElement('a'); ledger.href = 'assets/ATTRIBUTION.md'; ledger.textContent = '查看完整资产账本'; ledger.target = '_blank'; ledger.rel = 'noopener';
+      var policy = document.createElement('a'); policy.href = 'docs/ASSET_POLICY.md'; policy.textContent = '查看开放资产政策'; policy.target = '_blank'; policy.rel = 'noopener';
+      links.appendChild(ledger); links.appendChild(policy); box.appendChild(links);
+    });
+  };
+
   /* ============================ Settings ============================ */
   UI.settings = function () {
     UI.openModal(function (box) {
@@ -1130,7 +1202,7 @@
       var rng = document.createElement('input'); rng.type = 'range'; rng.min = '0.2'; rng.max = '1.8'; rng.step = '0.1';
       rng.value = String(SGS.PACE == null ? 0.8 : SGS.PACE);
       var val = el('span', null, '');
-      function upd() { var v = parseFloat(rng.value); SGS.PACE = v; if (SGS.Anim) SGS.Anim.PACE = v; save('pace', v); val.textContent = v <= 0.5 ? '快' : v >= 1.3 ? '慢' : '适中'; }
+      function upd() { var v = parseFloat(rng.value); if (SGS.setPace) SGS.setPace(v); else { SGS.PACE = v; if (SGS.Anim) SGS.Anim.PACE = v; save('pace', v); } val.textContent = v <= 0.5 ? '快' : v >= 1.3 ? '慢' : '适中'; }
       rng.oninput = upd; upd();
       row.appendChild(rng); row.appendChild(val);
       box.appendChild(row);
@@ -1154,9 +1226,11 @@
         r4.appendChild(vr); box.appendChild(r4);
       }
 
-      box.appendChild(el('div', 'set-row', '提示：右键（触屏长按）任意卡牌查看详情；点击角色查看武将资料与技能。'));
+      box.appendChild(el('div', 'set-row', '距离：角色左上角显示“你 → 对方”的真实距离；绿色“可攻击”表示不超过当前攻击范围。悬停可查看双向距离，坐骑和技能可能使两个方向不同。'));
+      box.appendChild(el('div', 'set-row', '互动：角色画像上方最多保留五条最近事件摘要，悬停摘要可查看完整的攻击、救援、技能或计策记录。'));
+      box.appendChild(el('div', 'set-row', '操作：右键（触屏长按）任意卡牌查看详情；点击角色查看武将资料与技能。'));
       var credits = el('button', 'btn-ghost', '图像来源与许可');
-      credits.onclick = function () { window.open('assets/ATTRIBUTION.md', '_blank', 'noopener'); };
+      credits.onclick = function () { UI.closeModal(); UI.assetCredits(); };
       box.appendChild(credits);
       var restart = el('button', 'btn-ghost', '重新开始（回到选将）');
       restart.onclick = function () { location.href = location.pathname; };

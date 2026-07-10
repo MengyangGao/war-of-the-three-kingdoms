@@ -16,7 +16,11 @@
     liubei:1, lvbu:1, lvmeng:1, machao:1, simayi:1, sunquan:1, sunshangxiang:1, xiahoudun:1,
     xiahouyuan:1, xuchu:1, zhangfei:1, zhangliao:1, zhaoyun:1, zhenji:1, zhouyu:1, zhugeliang:1
   };
-  ART.portraitUrl = function (key) { return ART.PORTRAITS[key] ? ('assets/generals/' + key + '.jpg') : null; };
+  ART.portraitUrl = function (key) {
+    if (!ART.PORTRAITS[key]) return null;
+    var embedded = root.__SFT_PORTRAITS__;
+    return embedded && embedded[key] ? embedded[key] : ('assets/generals/' + key + '.jpg');
+  };
 
   var NATC = { wei: '#3a6ea5', shu: '#b5432f', wu: '#2e8b57', qun: '#7a6b52', god: '#c8a13a' };
   var __emblemUid = 0;

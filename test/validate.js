@@ -20,7 +20,7 @@ function assert(condition, message) {
 
 assert(indexHtml.includes('<title>三分天下 · 风云牌局</title>'), 'public title is not the original project brand');
 assert(!indexHtml.includes('三国杀'), 'legacy commercial brand leaked into the public page');
-for (const id of ['phaseRail', 'gameControls', 'generalSelection', 'licenseBtn']) {
+for (const id of ['phaseRail', 'gameControls', 'generalSelection', 'licenseBtn', 'paceControl', 'meRange', 'meEvents']) {
   assert(indexHtml.includes(`id="${id}"`), `missing redesigned UI contract: #${id}`);
 }
 

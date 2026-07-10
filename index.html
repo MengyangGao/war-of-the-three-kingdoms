@@ -68,6 +68,14 @@
       <header id="topbar">
         <div class="table-brand" aria-label="三分天下"><span>三分</span><b>天下</b></div>
         <div class="table-status"><span class="status-dot"></span><span>离线牌局</span></div>
+        <label class="pace-control" for="paceControl"><span>速度</span>
+          <select id="paceControl" aria-label="对局速度">
+            <option value="1.45">慢速 0.6×</option>
+            <option value="0.8" selected>标准 1×</option>
+            <option value="0.42">快速 2×</option>
+            <option value="0.16">极速 3×</option>
+          </select>
+        </label>
         <nav class="table-tools" aria-label="牌局工具">
           <button class="tb" id="encyBtn2" type="button"><span aria-hidden="true">册</span><span>图鉴</span></button>
           <button class="tb" id="settingsBtn" type="button"><span aria-hidden="true">调</span><span>设置</span></button>
@@ -115,9 +123,11 @@
             <div class="me-identity"><span class="me-caption">我的武将</span><strong id="meGeneral">—</strong></div>
             <span class="nat-badge" id="meNation"></span>
             <span id="meHp"></span>
+            <span id="meRange" aria-label="你的攻击范围"></span>
             <span id="meEquip"></span>
           </div>
           <div id="meSkills" aria-label="武将技能"></div>
+          <div id="meEvents" class="personal-events" aria-label="你最近参与的事件"></div>
         </div>
 
         <div id="gameControls" class="command-bar" tabindex="-1">
@@ -138,6 +148,9 @@
   <div id="overlay" class="hidden" role="dialog" aria-modal="true"><div class="box"></div></div>
   <div id="modal" class="hidden" role="dialog" aria-modal="true"><div class="modal-box"></div></div>
   <div id="banner" class="hidden" role="status" aria-live="assertive"></div>
+
+  <!-- 构建单文件时由 tools/build_single.py 注入画像和完整署名账本。 -->
+  <!-- SINGLE_FILE_ASSETS -->
 
   <!-- 经典脚本按顺序加载，保留直接通过 file:// 离线运行的能力。 -->
   <script src="js/00-core.js"></script>

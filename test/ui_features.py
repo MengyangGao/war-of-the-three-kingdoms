@@ -35,7 +35,10 @@ def main():
               noPageOverflow: root.scrollWidth <= innerWidth && root.scrollHeight <= innerHeight,
               opponentCount: panels.length,
               visibleOpponents: panels.filter(p => { const r=p.getBoundingClientRect(); return r.left>=0 && r.right<=innerWidth; }).length,
-              singleSeatRow: opp.querySelectorAll('.opp-row').length === 1
+              singleSeatRow: opp.querySelectorAll('.opp-row').length === 1,
+              distanceLabels: opp.querySelectorAll('.distance-chip').length,
+              speedControl: !!document.getElementById('paceControl'),
+              activityCount: document.querySelectorAll('.event-chip').length
             };
         }""")
 
@@ -92,6 +95,8 @@ def main():
     ok = (not errors and bool(out.get("log_sample")) and
           desktop.get("noPageOverflow") and desktop.get("opponentCount") == 7 and
           desktop.get("visibleOpponents") == 7 and desktop.get("singleSeatRow") and
+          desktop.get("distanceLabels") == 7 and desktop.get("speedControl") and
+          desktop.get("activityCount", 0) > 0 and
           all(mobile.values()))
     print("RESULT:", "PASS" if ok else "FAIL")
     sys.exit(0 if ok else 1)
