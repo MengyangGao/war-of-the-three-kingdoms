@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 美术资源 (art)
+ * 三分天下 · 程序化美术与开放画像映射 (art)
  *   - SGS.ART.portraitUrl(key)   -> path to a downloaded PD portrait, or null
  *   - SGS.ART.emblemSVG(gen)     -> generated nation emblem (fallback portrait)
  *   - SGS.ART.cardIconSVG(card)  -> inline SVG emblem for a card

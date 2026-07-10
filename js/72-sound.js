@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 音效与配乐 (sound) — 纯 WebAudio 程序化合成，无需素材，离线可用
+ * 三分天下 · 音效与配乐 — 纯 WebAudio 程序化合成，无需素材，离线可用
  *   SGS.Sound.init()         create/resume AudioContext (call on a user gesture)
  *   SGS.Sound.play(name)     one-shot SFX
  *   SGS.Sound.setSfx(on) / setMusic(on) / setVolume(v)
@@ -13,8 +13,8 @@
   var AC = window.AudioContext || window.webkitAudioContext;
   var ctx = null, master = null, musicGain = null, musicTimer = null;
 
-  function load(key, def) { try { var v = localStorage.getItem('sgs_' + key); return v == null ? def : JSON.parse(v); } catch (e) { return def; } }
-  function save(key, v) { try { localStorage.setItem('sgs_' + key, JSON.stringify(v)); } catch (e) {} }
+  function load(key, def) { try { var v = localStorage.getItem('sft_' + key); if (v == null) v = localStorage.getItem('sgs_' + key); return v == null ? def : JSON.parse(v); } catch (e) { return def; } }
+  function save(key, v) { try { localStorage.setItem('sft_' + key, JSON.stringify(v)); } catch (e) {} }
   function clampVolume(v) {
     v = Number(v);
     return Number.isFinite(v) ? Math.max(0, Math.min(1, v)) : 0.7;

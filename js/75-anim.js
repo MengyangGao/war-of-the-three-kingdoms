@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 动画时间线 (Animation Timeline)
+ * 三分天下 · 动画时间线
  *   - AnimQueue：串行 Promise 动画队列
  *   - 引擎通过 game.anim(name, data) 触发，浏览器端自动排队播放
  *   - headless 环境直接返回 resolved Promise

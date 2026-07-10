@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 交互状态机 (Interaction State Machine)
+ * 三分天下 · 交互状态机
  *   - 解决 UI.clickCard/UI.clickPlayer 被反复覆盖导致的"无法出杀"问题
  *   - UI.clickCard / UI.clickPlayer 只做分发，永不重新赋值
  *   - 当前实现为"idle / interactive"两层：interactive 状态把事件交给 UI.cur

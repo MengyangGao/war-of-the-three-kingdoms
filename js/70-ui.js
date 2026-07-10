@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 界面与交互 (browser UI)
+ * 三分天下 · 界面与交互 (browser UI)
  *   - SGS.UI          rendering + interaction state machine
  *   - SGS.HumanAgent  promise-based agent resolved by clicks
  *   - SGS.BrowserAI   AI wrapper adding pacing so turns are watchable
@@ -315,6 +315,9 @@
   UI.playerPanel = function (p) {
     var panel = el('div', 'player');
     panel.dataset.seat = p.seat;
+    panel.tabIndex = 0;
+    panel.setAttribute('role', 'button');
+    panel.setAttribute('aria-label', (p.general ? p.general.cn : p.name) + '，体力 ' + Math.max(0, p.hp) + '/' + p.maxHp + '，手牌 ' + p.hand.length);
     if (!p.alive) panel.classList.add('dead');
     if (p === UI.game.current) panel.classList.add('turn');
     if (p.hp <= 0 && p.alive) panel.classList.add('dying');
@@ -386,6 +389,7 @@
     } else {
       panel.onclick = function () { UI.generalDetail(p); };
     }
+    panel.onkeydown = function (event) { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); panel.click(); } };
     if (UI.selectedPlayers.indexOf(p) >= 0) panel.classList.add('selected');
 
     return panel;
@@ -394,6 +398,9 @@
   UI.cardEl = function (card, opts) {
     opts = opts || {};
     var c = el('div', 'card' + (opts.mini ? ' mini' : ''));
+    c.setAttribute('role', 'button');
+    c.tabIndex = 0;
+    c.setAttribute('aria-label', opts.back ? '一张背面朝上的牌' : SGS.cardLabel(card));
     if (opts.back) { c.classList.add('card-back'); return c; }
     var suit = SGS.SUITS[card.suit];
     // art layer (tint + icon)
@@ -428,6 +435,7 @@
       c.addEventListener('touchmove', function () { moved = true; if (lpTimer) { clearTimeout(lpTimer); lpTimer = null; } }, { passive: true });
       c.addEventListener('touchend', function (e) { if (lpTimer) { clearTimeout(lpTimer); lpTimer = null; } else { e.preventDefault(); } }, { passive: false });
     }
+    c.onkeydown = function (event) { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); c.click(); } };
     return c;
   };
 
@@ -515,10 +523,21 @@
     $('deckCount').textContent = UI.game.deck.length;
     $('discardCount').textContent = UI.game.discard.length;
     $('phaseBadge').textContent = UI.game.current ? (UI.game.current.name + ' · ' + (SGS.PHASE_CN[UI.game.phase] || '')) : '';
+    var phaseItems = document.querySelectorAll('#phaseRail [data-phase]');
+    for (var i = 0; i < phaseItems.length; i++) {
+      var active = phaseItems[i].getAttribute('data-phase') === UI.game.phase;
+      phaseItems[i].classList.toggle('active', active);
+      if (active) phaseItems[i].setAttribute('aria-current', 'step'); else phaseItems[i].removeAttribute('aria-current');
+    }
   };
 
   /* ============================ interaction plumbing ============================ */
-  UI.setHint = function (txt) { $('hint').textContent = txt || ''; };
+  UI.setHint = function (txt) {
+    var hint = $('hint');
+    hint.textContent = txt || '牌局正在结算…';
+    var bar = hint.closest ? hint.closest('.command-bar') : null;
+    if (bar) bar.classList.toggle('awaiting-input', !!txt);
+  };
   UI.clearControls = function () {
     UI.selectablePlayers = []; UI.selectedPlayers = [];
     UI.selectableCards = []; UI.selectedCards = [];
@@ -528,6 +547,7 @@
     var b = el('button', 'act-btn' + (cls ? ' ' + cls : ''), label);
     if (disabled) b.disabled = true;
     b.onclick = onclick;
+    b.type = 'button';
     $('actions').appendChild(b);
     return b;
   };
@@ -1152,12 +1172,15 @@
       }
 
       box.appendChild(el('div', 'set-row', '提示：右键（触屏长按）任意卡牌查看详情；点击角色查看武将资料与技能。'));
+      var credits = el('button', 'btn-ghost', '图像来源与许可');
+      credits.onclick = function () { window.open('assets/ATTRIBUTION.md', '_blank', 'noopener'); };
+      box.appendChild(credits);
       var restart = el('button', 'btn-ghost', '重新开始（回到选将）');
       restart.onclick = function () { location.href = location.pathname; };
       box.appendChild(restart);
     });
   };
-  function save(key, v) { try { localStorage.setItem('sgs_' + key, JSON.stringify(v)); } catch (e) {} }
+  function save(key, v) { try { localStorage.setItem('sft_' + key, JSON.stringify(v)); } catch (e) {} }
 
   /* ============================ game over ============================ */
   UI.gameOver = function (winners) {

@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 卡牌定义 (cards)
+ * 三分天下 · 卡牌定义 (cards)
  *   - CARD_DB : template for every card kind (metadata + flags)
  *   - buildDeck() : returns a shuffled-ready array of concrete card instances
  * Effect logic lives in the engine / card-effects module, keyed by card.name.

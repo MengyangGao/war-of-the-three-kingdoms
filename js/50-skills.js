@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 技能 (skills registry)
+ * 三分天下 · 技能注册表
  *   Each skill: { name, cn, desc, ...hooks }
  *   Hooks the engine looks for:
  *     triggers[event](game, me, ev)          timing triggers

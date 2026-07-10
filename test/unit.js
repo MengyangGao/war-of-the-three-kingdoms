@@ -1,5 +1,5 @@
 'use strict';
-/* Per-skill / per-card unit tests for the 三国杀 engine.
+/* Per-skill / per-card unit tests for the Three Realms engine.
  * Loads the browser JS into a Node vm sandbox (same files the browser uses)
  * and asserts specific behaviours. Exits nonzero if any assertion fails. */
 const fs = require('fs'), path = require('path'), vm = require('vm');

@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 引擎 (engine)
+ * 三分天下 · 规则引擎 (engine)
  *   Game / Player, async turn loop, event & trigger dispatch,
  *   damage / heal / dying / death, distance & range, judgment, card moving.
  *

@@ -1,6 +1,6 @@
 {
   "name": "war-of-the-three-kingdoms",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "三分天下：原创离线三国题材策略卡牌游戏",
   "private": true,
   "scripts": {

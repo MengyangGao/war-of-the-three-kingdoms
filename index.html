@@ -2,95 +2,144 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>三国杀 · 离线版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#151815" />
+  <meta name="description" content="三分天下是一款原创、离线可玩的三国题材策略卡牌游戏。" />
+  <title>三分天下 · 风云牌局</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <a class="skip-link" href="#gameControls">跳到操作区</a>
 
-  <!-- ===== Start screen ===== -->
-  <div id="start">
-    <h1>三国杀</h1>
-    <div class="sub">离线单机版 · 身份局</div>
-
-    <div class="setup-row">
-      <label>玩家人数：</label>
-      <div class="seg" id="countSeg"></div>
+  <main id="start" aria-labelledby="brandTitle">
+    <div class="start-atmosphere" aria-hidden="true">
+      <span class="sun-disc"></span><span class="ridge ridge-a"></span><span class="ridge ridge-b"></span>
     </div>
 
-    <div class="setup-row"><label>选择你的武将（默认随机）：</label></div>
-    <div class="gen-pick" id="genGrid"></div>
+    <header class="brand-block">
+      <div class="eyebrow"><span></span>原创离线策略卡牌<span></span></div>
+      <h1 id="brandTitle"><span>三分天下</span><small>风云牌局</small></h1>
+      <p>观势 · 择将 · 破局</p>
+    </header>
 
-    <div class="setup-row" style="margin-top:10px;">
-      <button class="btn-primary" id="startBtn">开始游戏</button>
-      <button class="btn-ghost" id="encyBtn">📖 图鉴</button>
-    </div>
-    <div class="sub" style="font-size:12px;max-width:640px;text-align:center;line-height:1.6;">
-      规则：主公与忠臣同阵营，需消灭反贼与内奸；反贼需杀死主公；内奸需成为最后的幸存者。<br/>
-      点击手牌或技能出牌，点击角色选择目标。右侧为实时战报。
-    </div>
-  </div>
+    <section class="setup-shell" aria-label="新对局设置">
+      <aside class="setup-panel">
+        <div class="panel-kicker">壹 · 布阵</div>
+        <h2>建立新牌局</h2>
+        <p class="panel-copy">选择参战人数和你的武将。身份与座次将在开局时随机分配。</p>
 
-  <!-- ===== Table ===== -->
-  <div id="table" class="hidden">
-    <div id="tableLeft">
-      <div id="stageHint"></div>
-      <div id="topbar">
-        <button class="tb" id="encyBtn2">📖 图鉴</button>
-        <button class="tb" id="settingsBtn">⚙ 设置</button>
-        <button class="tb" id="logToggle">📜 战报</button>
-      </div>
+        <fieldset class="setup-field">
+          <legend>参战人数</legend>
+          <div class="seg" id="countSeg" aria-label="选择玩家人数"></div>
+        </fieldset>
 
-      <div id="opponents"></div>
-
-      <div id="center">
-        <div id="phaseBadge"></div>
-        <div id="ticker"></div>
-        <div class="pile">
-          <div id="deckCount">0</div>
-          <div>牌堆</div>
+        <div class="mode-card">
+          <span class="mode-icon" aria-hidden="true">令</span>
+          <div><strong>身份演武</strong><small>3–8 人 · 单人对阵 AI · 离线运行</small></div>
+          <span class="mode-state">已选</span>
         </div>
-        <div id="playArea"></div>
-        <div class="pile">
-          <div id="discardCount">0</div>
-          <div>弃牌</div>
-        </div>
-        <div id="hint"></div>
-      </div>
 
-      <div id="me">
+        <div class="setup-actions">
+          <button class="btn-primary" id="startBtn" type="button"><span>开始 8 人牌局</span><b aria-hidden="true">→</b></button>
+          <button class="btn-ghost" id="encyBtn" type="button">浏览武将与卡牌</button>
+        </div>
+
+        <p class="asset-note"><span aria-hidden="true">◇</span> 历史画像逐项审计；其余视觉与音效由代码生成</p>
+      </aside>
+
+      <section class="general-panel" aria-labelledby="generalHeading">
+        <div class="general-heading">
+          <div><div class="panel-kicker">贰 · 点将</div><h2 id="generalHeading">选择你的武将</h2></div>
+          <p id="generalSelection" aria-live="polite">当前：随机武将</p>
+        </div>
+        <div class="gen-pick" id="genGrid" role="group" aria-label="可选武将"></div>
+      </section>
+    </section>
+
+    <footer class="start-footer">
+      <span>纯前端 · 无追踪 · 无需联网</span>
+      <span aria-hidden="true">◆</span>
+      <button id="licenseBtn" type="button">来源与许可</button>
+    </footer>
+  </main>
+
+  <main id="table" class="hidden" aria-label="三分天下牌局">
+    <section id="tableLeft" aria-label="牌桌">
+      <header id="topbar">
+        <div class="table-brand" aria-label="三分天下"><span>三分</span><b>天下</b></div>
+        <div class="table-status"><span class="status-dot"></span><span>离线牌局</span></div>
+        <nav class="table-tools" aria-label="牌局工具">
+          <button class="tb" id="encyBtn2" type="button"><span aria-hidden="true">册</span><span>图鉴</span></button>
+          <button class="tb" id="settingsBtn" type="button"><span aria-hidden="true">调</span><span>设置</span></button>
+          <button class="tb" id="logToggle" type="button"><span aria-hidden="true">录</span><span>战报</span></button>
+        </nav>
+      </header>
+
+      <div id="stageHint" role="status" aria-live="polite"></div>
+      <section id="opponents" aria-label="其他角色"></section>
+
+      <section id="center" aria-label="中央结算区">
+        <div class="phase-console">
+          <div id="phaseBadge">等待开局</div>
+          <ol id="phaseRail" aria-label="回合阶段">
+            <li data-phase="start"><span>壹</span>准备</li>
+            <li data-phase="judge"><span>贰</span>判定</li>
+            <li data-phase="draw"><span>叁</span>摸牌</li>
+            <li data-phase="play"><span>肆</span>出牌</li>
+            <li data-phase="discard"><span>伍</span>弃牌</li>
+            <li data-phase="end"><span>陆</span>结束</li>
+          </ol>
+        </div>
+        <div id="ticker" aria-live="polite"></div>
+
+        <div class="battlefield">
+          <div class="pile deck-pile" aria-label="牌堆">
+            <div class="pile-card" aria-hidden="true"><i></i><i></i><i></i></div>
+            <strong id="deckCount">0</strong><span>牌堆</span>
+          </div>
+          <div class="play-stage">
+            <div class="stage-label">结算区</div>
+            <div id="playArea"></div>
+          </div>
+          <div class="pile discard-pile" aria-label="弃牌堆">
+            <div class="pile-mark" aria-hidden="true">弃</div>
+            <strong id="discardCount">0</strong><span>弃牌</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="me" aria-label="你的区域">
         <div id="meTop">
           <div id="meInfo">
-            <div id="meAvatar"></div>
-            <span id="meGeneral">—</span>
+            <div id="meAvatar" role="button" tabindex="0" aria-label="查看我的武将"></div>
+            <div class="me-identity"><span class="me-caption">我的武将</span><strong id="meGeneral">—</strong></div>
             <span class="nat-badge" id="meNation"></span>
             <span id="meHp"></span>
             <span id="meEquip"></span>
           </div>
-          <div id="meSkills"></div>
-          <div id="actions"></div>
+          <div id="meSkills" aria-label="武将技能"></div>
         </div>
-        <div id="hand"></div>
-      </div>
-    </div>
 
-    <!-- ===== Log (persistent dock) ===== -->
-    <div id="logWrap">
-      <div class="log-head">
-        <h3>战报</h3>
-        <button id="logFilter">全部</button>
-      </div>
-      <div id="log"></div>
-    </div>
-  </div>
+        <div id="gameControls" class="command-bar" tabindex="-1">
+          <div class="command-copy"><span>当前指令</span><strong id="hint" role="status" aria-live="polite">等待牌局开始</strong></div>
+          <div id="actions" aria-label="可执行操作"></div>
+        </div>
+        <div class="hand-heading"><span>手牌</span><small>点击牌查看或使用；右键查看详情</small></div>
+        <div id="hand" aria-label="你的手牌"></div>
+      </section>
+    </section>
 
-  <!-- ===== Overlays ===== -->
-  <div id="overlay" class="hidden"><div class="box"></div></div>
-  <div id="modal" class="hidden"><div class="modal-box"></div></div>
-  <!-- banner for phases/turns -->
-  <div id="banner" class="hidden"></div>
+    <aside id="logWrap" class="collapsed" aria-label="牌局战报">
+      <div class="log-head"><div><span>军情录</span><h2>牌局战报</h2></div><button id="logFilter" type="button">全部</button></div>
+      <div id="log" role="log" aria-live="polite"></div>
+    </aside>
+  </main>
 
-  <!-- ===== Scripts (classic, load in order; works via file://) ===== -->
+  <div id="overlay" class="hidden" role="dialog" aria-modal="true"><div class="box"></div></div>
+  <div id="modal" class="hidden" role="dialog" aria-modal="true"><div class="modal-box"></div></div>
+  <div id="banner" class="hidden" role="status" aria-live="assertive"></div>
+
+  <!-- 经典脚本按顺序加载，保留直接通过 file:// 离线运行的能力。 -->
   <script src="js/00-core.js"></script>
   <script src="js/10-cards.js"></script>
   <script src="js/15-art.js"></script>
@@ -102,7 +151,7 @@
   <script src="js/70-ui.js"></script>
   <script src="js/72-sound.js"></script>
   <script src="js/75-anim.js"></script>
-  <script src="js/76-table.js"></script>
+  <script src="js/76-seating.js"></script>
   <script src="js/77-state.js"></script>
   <script src="js/80-main.js"></script>
 </body>

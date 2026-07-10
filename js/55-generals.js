@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 武将 (generals)
+ * 三分天下 · 武将数据
  *   Each general: key, cn, nation, gender, hp, skills[], lordSkills[], title.
  *   Skills are resolved by name against SGS.SKILLS at setup time; any skill
  *   not yet implemented is simply inert (the general still has hp/nation/etc).

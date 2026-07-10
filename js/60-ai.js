@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · AI 智能体 (ai)
+ * 三分天下 · AI 智能体
  *   SGS.AIAgent.decide(game, player, req) -> response (sync value or Promise)
  *   Role-aware heuristics: rebels gang the lord, loyalists defend, traitor
  *   plays the long game. Handles every request type the engine can raise.

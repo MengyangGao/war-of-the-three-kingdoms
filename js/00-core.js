@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 离线版  —  core namespace, constants, utilities
+ * 三分天下 · 核心命名空间、常量与工具
  * Works in the browser (classic <script>) and under Node (via test harness).
  * Everything hangs off the global `SGS` namespace object.
  * ========================================================================== */

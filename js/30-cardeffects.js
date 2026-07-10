@@ -1,5 +1,5 @@
 /* ==========================================================================
- * 三国杀 · 卡牌效果 (card effects & play legality)
+ * 三分天下 · 卡牌效果与出牌合法性
  *   - SGS.playOptions(game, player)         -> legal actions this play phase
  *   - SGS.executePlayAction(game, player, action)
  *   - SGS.doSha / trick resolvers / delayed-trick resolution
