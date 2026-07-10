@@ -441,15 +441,7 @@
 
   UI.renderOpponents = function () {
     var others = UI.game.players.filter(function (p) { return p !== UI.me; });
-    var sig = others.map(function (p) {
-      return [p.id, p.alive, p.hp, p.maxHp, p.hand.length, p.role,
-        p.equips.weapon && p.equips.weapon.id, p.equips.armor && p.equips.armor.id,
-        p.equips.offhorse && p.equips.offhorse.id, p.equips.defhorse && p.equips.defhorse.id,
-        p.judgeZone.map(function (c) { return c.id; }).join(','),
-        p.general && p.general.key, p.chained, p.faceUp, p.roleRevealed].join(':');
-    }).join('|') + '|current=' + (UI.game.current && UI.game.current.id) + ':' + UI.game.phase +
-      '|selectable=' + UI.selectablePlayers.map(function (p) { return p.id; }).join(',') +
-      '|selected=' + UI.selectedPlayers.map(function (p) { return p.id; }).join(',');
+    var sig = SGS.Presentation.opponentsSignature(UI.game, others, UI.selectablePlayers, UI.selectedPlayers);
     if (sig === UI._lastOppSig) return;
     UI._lastOppSig = sig;
     var wrap = $('opponents');
@@ -459,16 +451,7 @@
 
   UI.renderMe = function () {
     var p = UI.me;
-    var sig = [
-      p.hand.map(function (c) { return c.id; }).join(','),
-      UI.selectedCards.join(','),
-      UI.selectableCards.join(','),
-      [p.equips.weapon && p.equips.weapon.id, p.equips.armor && p.equips.armor.id,
-        p.equips.offhorse && p.equips.offhorse.id, p.equips.defhorse && p.equips.defhorse.id].join(','),
-      p.judgeZone.map(function (c) { return c.id; }).join(','),
-      p.hp, p.maxHp, p.role, p.alive, p.chained, p.faceUp,
-      UI.game.current && UI.game.current.id, UI.game.phase
-    ].join('|');
+    var sig = SGS.Presentation.selfSignature(UI.game, p, UI.selectableCards, UI.selectedCards);
     if (sig === UI._lastMeSig) return;
     UI._lastMeSig = sig;
     var av = $('meAvatar');

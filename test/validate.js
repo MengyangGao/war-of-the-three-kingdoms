@@ -44,6 +44,8 @@ for (const file of HEADLESS_FILES.concat(['js/15-art.js'])) {
   vm.runInContext(fs.readFileSync(path.join(ROOT, file), 'utf8'), sandbox, { filename: file });
 }
 const SGS = sandbox.SGS;
+assert(typeof SGS.Presentation.opponentsSignature === 'function', 'missing pure presentation projection');
+assert(typeof SGS.Presentation.selfSignature === 'function', 'missing self-view projection');
 
 for (const general of SGS.generalList()) {
   assert(!!SGS.NATIONS[general.nation], `${general.key}: unknown nation ${general.nation}`);

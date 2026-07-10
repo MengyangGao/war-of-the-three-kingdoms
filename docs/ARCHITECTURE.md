@@ -13,7 +13,9 @@
         ↓              ↓
       60-ai        55-generals
         ↓              ↓
-70-ui / 72-sound / 75-anim / 76-table / 77-state
+  65-presentation（纯投影）
+        ↓
+70-ui / 72-sound / 75-anim / 76-seating / 77-state
                        ↓
                     80-main
 ```
@@ -25,8 +27,10 @@
 - `50-skills.js`：技能声明及其钩子。技能通过事件修改结算上下文，不直接驱动 UI。
 - `55-generals.js`：武将数据；只引用技能键。
 - `60-ai.js`：对 `game.ask()` 请求做决策，不直接修改游戏状态。
+- `65-presentation.js`：将游戏对象投影为稳定的展示签名，不访问 DOM、不修改状态。
 - `70-ui.js`：浏览器渲染和 HumanAgent；只把合法选择返回引擎。
 - `75-anim.js`：串行动画队列。动画失败会记录错误并释放队列，不阻塞规则结算。
+- `76-seating.js`：只组织对手的语义座次，响应式尺寸由 CSS 决定。
 - `77-state.js`：卡牌/目标选择状态，不包含规则判断。
 - `80-main.js`：唯一装配入口。
 

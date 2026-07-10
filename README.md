@@ -46,6 +46,7 @@ js/40-engine.js            玩家、回合、伤害、濒死、判定与胜负
 js/50-skills.js            技能实现
 js/55-generals.js          武将数据
 js/60-ai.js                AI 决策
+js/65-presentation.js      无 DOM 的展示层状态投影
 js/70-ui.js                UI 组件、视图渲染和人类代理
 js/72-sound.js             WebAudio 程序化声音
 js/75-anim.js              动画时间线

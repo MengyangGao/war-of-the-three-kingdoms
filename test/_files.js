@@ -10,5 +10,6 @@ module.exports = [
   'js/40-engine.js',
   'js/50-skills.js',
   'js/55-generals.js',
-  'js/60-ai.js'
+  'js/60-ai.js',
+  'js/65-presentation.js'
 ];
