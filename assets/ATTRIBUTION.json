@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "key": "caocao",
+      "local_file": "assets/generals/caocao.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/57/Cao_Cao_scth.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "9efa0650a62f5a3b7d9f47e2eb3d32434c54126bce18fcce9335e7de96d191e4",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Cao_Cao_scth.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Cao_Cao_scth.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Wang Qi",
+      "credit": "A copy of w:Sancai Tuhui",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "simayi",
+      "local_file": "assets/generals/simayi.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/80/%E9%AD%8F%C2%B7%E5%A4%AA%E5%82%85_%E5%8F%B8%E9%A6%AC%E6%87%BF.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "5c6baf30d8eec62b4812611cc3614eed505dcbb9eb3ce0e9f55262140c42b392",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:%E9%AD%8F%C2%B7%E5%A4%AA%E5%82%85_%E5%8F%B8%E9%A6%AC%E6%87%BF.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/%E9%AD%8F%C2%B7%E5%A4%AA%E5%82%85_%E5%8F%B8%E9%A6%AC%E6%87%BF.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Ming Zhu Tianran",
+      "credit": "Praise of the Ancients",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "xiahoudun",
+      "local_file": "assets/generals/xiahoudun.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/37/Xiahou_Dun_Portrait.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "0ea8b9e3256bdc3839256bdceb0b56a647b5dc325025c4b8434365b51bb65be6",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Xiahou_Dun_Portrait.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Xiahou_Dun_Portrait.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "",
+      "credit": "",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "zhangliao",
+      "local_file": "assets/generals/zhangliao.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/22/Zhang_Liao_Portrait.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "51a5acfbb6bd9bf3d4e81ea2aeb1c684c550a2f93e55dcdfabe9c702b24f022e",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Zhang_Liao_Portrait.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Zhang_Liao_Portrait.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "",
+      "credit": "En Wikipedia",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "xiahouyuan",
+      "local_file": "assets/generals/xiahouyuan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Xiahou_Yuan_Portrait.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "72e520d7e9ac5f8d07abe7a805aadf3dc7b7b5b12b80e781d0958c666386828e",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Xiahou_Yuan_Portrait.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Xiahou_Yuan_Portrait.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "From a Qing Dynasty edition of the Romance of the Three Kingdoms",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "xuchu",
+      "local_file": "assets/generals/xuchu.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Xu_Chu_Qing_illustration.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "7cc7bea81965a5cf7163269af8396b8304a27ced16c6189d553fb41bdaea3a9a",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Xu_Chu_Qing_illustration.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Xu_Chu_Qing_illustration.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author",
+      "credit": "Taken from Gongjin's Campaign Memorials: a Three Kingdoms Wiki Zengxiang quantu Sanguoyanyi",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "guojia",
+      "local_file": "assets/generals/guojia.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/5c/GuoJia.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "f8b5a22ecb21464abc22fe7c42bcf070187e15b806045922698aca20b689f892",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:GuoJia.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/GuoJia.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "",
+      "credit": "",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "zhenji",
+      "local_file": "assets/generals/zhenji.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Lady_Zhen_Qing_dynasty_portrait.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "f04e96b782964d6d1b517769ea489635b28838635466d4c52ccd7453188a787f",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Lady_Zhen_Qing_dynasty_portrait.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Lady_Zhen_Qing_dynasty_portrait.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "Taken from Gongjin's Campaign Memorials: a Three Kingdoms Wiki Zengxiang quantu Sanguoyanyi",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "liubei",
+      "local_file": "assets/generals/liubei.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/34/Liu_Bei_Tang.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "b4e4841d640a9e9b927343dbf9e89e1a59760f28840030a2ecef148213f3a0d0",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Liu_Bei_Tang.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Liu_Bei_Tang.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Yan Liben (閻立本)",
+      "credit": "http://hi.baidu.com/%CB%CE%BE%FC%D2%C5%C3%F1/album/%D1%D6%C1%A2%B1%BE%20%C0%FA%B4%FA%B5%DB%CD%F5%CD%BC%BE%ED",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "guanyu",
+      "local_file": "assets/generals/guanyu.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Guanyu-1.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "8433c92f7c6f38018e197720dfc1cb517e1f27611adc70dd5e361abd79d624f8",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Guanyu-1.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Guanyu-1.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown Unknown , uploaded by Tiangong83 on zh.wikipedia",
+      "credit": "Sancai Tuhui, a Chinese encyclopedia, scanned from vol. 25 sheet 42 [1]",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "zhangfei",
+      "local_file": "assets/generals/zhangfei.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/86/%E6%95%85%E5%AE%AB%E5%8D%97%E8%96%B0%E6%AE%BF%E5%BC%A0%E9%A3%9E%E7%94%BB%E5%83%8F.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "22a9a6c8e601e76eee9c7d062ce7748a20b46560eb690bb55b39213a8534416b",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:%E6%95%85%E5%AE%AB%E5%8D%97%E8%96%B0%E6%AE%BF%E5%BC%A0%E9%A3%9E%E7%94%BB%E5%83%8F.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/8/86/%E6%95%85%E5%AE%AB%E5%8D%97%E8%96%B0%E6%AE%BF%E5%BC%A0%E9%A3%9E%E7%94%BB%E5%83%8F.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "明代画师",
+      "credit": "原故宫南薰殿藏",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "zhugeliang",
+      "local_file": "assets/generals/zhugeliang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/da/%E8%9C%80%E6%B1%89%E4%B8%9E%E7%9B%B8%E5%BF%A0%E6%AD%A6%E4%BE%AF%E8%AF%B8%E8%91%9B%E4%BA%AE.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "1d1bd30b9beda661bad08efe79c798921203cd751abad749692438cbdee49dc9",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:%E8%9C%80%E6%B1%89%E4%B8%9E%E7%9B%B8%E5%BF%A0%E6%AD%A6%E4%BE%AF%E8%AF%B8%E8%91%9B%E4%BA%AE.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/%E8%9C%80%E6%B1%89%E4%B8%9E%E7%9B%B8%E5%BF%A0%E6%AD%A6%E4%BE%AF%E8%AF%B8%E8%91%9B%E4%BA%AE.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "Unknown source Unknown source",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "zhaoyun",
+      "local_file": "assets/generals/zhaoyun.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/b/bf/ZhaoYun.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "7df6c8739546c022e5f6df587e84a88b559c5a8c665b7c63f815d5c123a662f0",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:ZhaoYun.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/ZhaoYun.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "http://members.shaw.ca/jiuwan4/ZhaoYun.jpg",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "machao",
+      "local_file": "assets/generals/machao.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/dd/MaChao.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "82b0cbdfb460efe351aa0284e5de816f52b7053df691ce01d254fcfcba9ae8b5",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:MaChao.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/MaChao.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "http://members.shaw.ca/jiuwan4/MaChao.jpg",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "sunquan",
+      "local_file": "assets/generals/sunquan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Sun_Quan_Tang.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "97a4dd422ae4669bafc24505022c4029e96e3a30243765dd05d957d440a23842",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Sun_Quan_Tang.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Sun_Quan_Tang.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Yan Liben",
+      "credit": "http://hi.baidu.com/%CB%CE%BE%FC%D2%C5%C3%F1/album/%D1%D6%C1%A2%B1%BE%20%C0%FA%B4%FA%B5%DB%CD%F5%CD%BC%BE%ED",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "ganning",
+      "local_file": "assets/generals/ganning.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/7f/GanNing.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "d6393a3ee8010619874ea4bb55fe9f13038d9f0175b3ade12f7336fa2e328dff",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:GanNing.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/GanNing.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "http://members.shaw.ca/jiuwan4/GanNing.jpg",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "lvmeng",
+      "local_file": "assets/generals/lvmeng.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Lu_Meng.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "b7eff4fc90f962a2932e8f864e7be6a8320e3718fcbb6fa233fd15943d0f200d",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Lu_Meng.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Lu_Meng.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "不詳 (Unknown)",
+      "credit": "《增像全圖三國演義》上冊",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "huanggai",
+      "local_file": "assets/generals/huanggai.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/8b/HuangGai.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "5a78f27b5a9e1903c9af2bc57e739f21df96c1596eacaadb6a026b7f17d0f934",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:HuangGai.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/HuangGai.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "http://members.shaw.ca/jiuwan4/CaoZhi.jpg",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "zhouyu",
+      "local_file": "assets/generals/zhouyu.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f1/ZhouYu.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "4985b1c2e7c728ef9815cb81afee6371b9d55ed02b691530ff4f25dc5810461c",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:ZhouYu.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/ZhouYu.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "http://members.shaw.ca/jiuwan4/ZhouYu.jpg",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "daqiao",
+      "local_file": "assets/generals/daqiao.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/99/%E5%A4%A7%E4%B9%94%E5%B0%8F%E4%B9%94.png",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "45658cbbb0595538679961f85c4afa5805eadca2bd367ffe05b276ce9aadb75e",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E4%B9%94%E5%B0%8F%E4%B9%94.png",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/%E5%A4%A7%E4%B9%94%E5%B0%8F%E4%B9%94.png",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "The image is scanned from a Chinese book which was published at the Qing Dynasty, named as Bai mei xin yong tu zhuan(edited by 顔希源、王翙, Qing dynasty）",
+      "credit": "http://archive.wul.waseda.ac.jp/kosho/he18/he18_04884/he18_04884_0002/he18_04884_0002_p0050.jpg ]in 百美新詠 / 顔希源 [撰・輯 ; 王【カイ】 [絵]",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "sunshangxiang",
+      "local_file": "assets/generals/sunshangxiang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/05/Lady_Sun.png",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "819519e9c7e9c999c110584ee52edbb934a98c46c419deedac8e263989545cff",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:Lady_Sun.png",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Lady_Sun.png",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "artist": "Wang Hui 王翙 （1736-1795）",
+      "credit": "Lady Sun, from the 18th century work Hundred Poems of Beautiful Women (Bai Mei Xin Yong Tu Zhuan 百美新詠圖傳) by Yan Xiyuan (颜希源). Woodblock print of drawing by Wang Hui 王翙",
+      "attribution_required": "true",
+      "copyrighted": "True"
+    },
+    {
+      "key": "huatuo",
+      "local_file": "assets/generals/huatuo.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/23/%E6%B1%89%E5%90%8D%E5%8C%BB%E5%8D%8E%E4%BD%97.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "190e299f96d7c4e74571dd2951429c02ee020353ac9f261b551252b53420a042",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:%E6%B1%89%E5%90%8D%E5%8C%BB%E5%8D%8E%E4%BD%97.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/%E6%B1%89%E5%90%8D%E5%8C%BB%E5%8D%8E%E4%BD%97.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "清宫殿藏画本. 北京: 故宫博物馆出版社. 1994.",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "lvbu",
+      "local_file": "assets/generals/lvbu.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/b/ba/L%C3%BC_Bu_Portrait.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "df5a5ec4212877cfe2f969031ed67faba485cfa5d2fedc441378ee1e5cd8bfe9",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:L%C3%BC_Bu_Portrait.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/L%C3%BC_Bu_Portrait.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "",
+      "credit": "w:Image:Lü Bu Portrait.jpg",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    },
+    {
+      "key": "diaochan",
+      "local_file": "assets/generals/diaochan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/6/64/DiaoChan.jpg",
+      "size": [
+        360,
+        480
+      ],
+      "sha256": "cbdd7e34f54b4ae4322e50f2385741944325b79c0c2ac141cf2897efbd183354",
+      "allowed": true,
+      "file_page": "https://commons.wikimedia.org/wiki/File:DiaoChan.jpg",
+      "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/DiaoChan.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "artist": "Unknown author Unknown author",
+      "credit": "http://members.shaw.ca/jiuwan4/DiaoChan.jpg",
+      "attribution_required": "false",
+      "copyrighted": "False"
+    }
+  ],
+  "errors": []
+}
