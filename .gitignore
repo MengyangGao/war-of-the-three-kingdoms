@@ -1,1 +1,8 @@
+__pycache__/
+*.py[cod]
 .DS_Store
+.venv/
+node_modules/
+
+# UI tests overwrite these local artifacts.
+test/shot_*.png
